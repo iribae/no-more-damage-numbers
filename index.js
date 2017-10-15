@@ -1,0 +1,11 @@
+const Command = require('command')
+
+module.exports = function blockSkill(dispatch) {
+	const command = Command(dispatch)
+	let enabled
+	command.add('rskill', () => { enabled = !enabled})
+	dispatch.hook('S_EACH_SKILL_RESULT', () => {
+	  if (!enabled) return
+	return false
+	})
+}
