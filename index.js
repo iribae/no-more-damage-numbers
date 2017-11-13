@@ -7,7 +7,8 @@ module.exports = function blockSkill(dispatch) {
 		enabled = !enabled
 		command.message('damage spam garbo blocker '+(enabled?'enabled':'disabled')+'.')
 	})
-	dispatch.hook('S_EACH_SKILL_RESULT', () => {
+	dispatch.hook('S_EACH_SKILL_RESULT', (event) => {
+		damage = event.damage
 	  if (!enabled) return
 	return false
 	})
