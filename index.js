@@ -1,14 +1,12 @@
 const Command = require('command')
 
-module.exports = function blockSkill(dispatch) {
-	const command = Command(dispatch)
-	let enabled
-	command.add('rskill', () => {
-		enabled = !enabled
-		command.message('damage spam garbo blocker '+(enabled?'enabled':'disabled')+'.')
-	})
-	dispatch.hook('S_EACH_SKILL_RESULT', () => {
-	  if (!enabled) return
-	return false
-	})
+class blockSkill {
+	constructor(dispatch) {
+		let enabled=false;
+		command.add('hidedmg', enabled=!enabled;)
+		dispatch.hook('S_EACH_SKILL_RESULT', 4, packet => {
+			if(!enabled) packet.damage=0;
+		});
+	}
 }
+module.exports = function blockSkill
